@@ -1,0 +1,16 @@
+{
+  "name": "songbook",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jesse Kriss <jesse@jklabs.net>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "pdfjs": "^2.4.7",
+    "simplechordpro": "^1.0.1"
+  }
+}
