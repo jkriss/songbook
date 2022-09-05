@@ -80,7 +80,7 @@ function makeSongbook() {
 
         doc.text(' \n')
 
-        doc.text(content.trim(), { fontSize: 14, lineHeight: 1.5 })
+        doc.text(content.trim(), { fontSize: 12, lineHeight: 1.1 })
 
         doc.text(' \n\n')
         doc.text('Back to song list', { font: titleFont, fontSize: 12, goTo: 'toc' })
