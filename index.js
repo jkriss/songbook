@@ -2,13 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import pdf from 'pdfjs'
 import Chords from 'simplechordpro'
-import mono from 'pdfjs/font/Courier.js'
-import titleFont from 'pdfjs/font/Helvetica-Bold.js'
-import tocFont from 'pdfjs/font/Helvetica.js'
 const { parseCP } = Chords
 
 function convert(songSrc) {
-    let song = parseCP(songSrc)
+    let song = parseCP(songSrc.trim())
     song = song.replace(/[{}]/g, '')
     song = song.replace('subtitle:', '')
     song = song.replace('title:', '')
@@ -21,6 +18,10 @@ function splitMeta(str) {
 }
 
 function makeSongbook() {
+
+    const mono = new pdf.Font(fs.readFileSync('./fonts/source-code-pro/SourceCodePro-Medium.ttf'))
+    const titleFont = new pdf.Font(fs.readFileSync('./fonts/source-sans-pro/SourceSansPro-SemiBold.otf'))
+    const tocFont = new pdf.Font(fs.readFileSync('./fonts/source-sans-pro/SourceSansPro-Regular.otf'))
 
     const doc = new pdf.Document({
         font: mono,
@@ -79,9 +80,9 @@ function makeSongbook() {
 
         doc.text(' \n')
 
-        doc.text(content, { fontSize: 14, lineHeight: 1.5 })
+        doc.text(content.trim(), { fontSize: 14, lineHeight: 1.5 })
 
-        doc.text(' \n\n\n')
+        doc.text(' \n\n')
         doc.text('Back to song list', { font: titleFont, fontSize: 12, goTo: 'toc' })
     }
 
